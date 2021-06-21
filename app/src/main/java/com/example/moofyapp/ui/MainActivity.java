@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
         moviesRvWeek = findViewById(R.id.rv_movies_week);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onMovieClick(Movie movie, ImageView movieImageView) {
         // here we send movie information to detail activity
