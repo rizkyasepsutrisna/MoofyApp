@@ -1,6 +1,7 @@
 package com.example.moofyapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,71 +13,57 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moofyapp.R;
 import com.example.moofyapp.models.Movie;
+import com.example.moofyapp.ui.MovieDetailActivity;
 
 import java.util.List;
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder> {
 
     Context context ;
-    List<Movie> mData;
-    MovieItemClickListener movieItemClickListener;
+    List<Movie> movies;
 
 
-    public MovieAdapter(Context context, List<Movie> mData,MovieItemClickListener listener) {
+
+    public MovieAdapter(Context context, List<Movie> movies) {
         this.context = context;
-        this.mData = mData;
-        movieItemClickListener = listener;
+        this.movies = movies;
     }
 
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
-
+    public MovieHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_movie,viewGroup,false);
-        return new MyViewHolder(view);
-
-
+        return new MovieHolder(view);
         }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-
-
-        myViewHolder.TvTitle.setText(mData.get(i).getTitle());
-        myViewHolder.ImgMovie.setImageResource(mData.get(i).getThumbnail());
-
-
+    public void onBindViewHolder(@NonNull MovieHolder movieholder, int i) {
+        movieholder.TvTitle.setText(movies.get(i).getName());
+        movieholder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Movie movie1 = movies.get(i);
+                Intent moveData = new Intent(context, MovieDetailActivity.class);
+                moveData.putExtra("data_movie", movie1);
+                context.startActivity(moveData);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return movies.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MovieHolder extends RecyclerView.ViewHolder {
+        final TextView TvTitle;
+        final ImageView ImgMovie;
 
-
-        private TextView TvTitle;
-        private ImageView ImgMovie;
-
-
-        public MyViewHolder(@NonNull View itemView) {
-
+        public MovieHolder(@NonNull View itemView) {
             super(itemView);
             TvTitle = itemView.findViewById(R.id.item_movie_title);
             ImgMovie = itemView.findViewById(R.id.item_movie_img);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    movieItemClickListener.onMovieClick(mData.get(getAdapterPosition()),ImgMovie);
-
-
-                }
-            });
 
         }
     }

@@ -21,13 +21,18 @@ import com.google.android.exoplayer2.util.Util;
 public class MoviePlayerActivity extends AppCompatActivity {
 
     private PlayerView playerView;
+    private String links;
     private SimpleExoPlayer simpleExoPlayer;
-    public static final String VIDEO_TEST_URL="https://youtu.be/embed/Ruyl8_PT_y8";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_player);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            links = extras.getString("DATA_LINK");
+            //The key argument here must match that used in the other activity
+        }
         iniExoPlayer();
         setFullScreen();
         hideActionBar();
@@ -50,7 +55,7 @@ public class MoviePlayerActivity extends AppCompatActivity {
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
                 Util.getUserAgent(this, "appname"));
         MediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
-                .createMediaSource(Uri.parse(VIDEO_TEST_URL));
+                .createMediaSource(Uri.parse(links));
         simpleExoPlayer.prepare(videoSource);
         simpleExoPlayer.setPlayWhenReady(true);
 

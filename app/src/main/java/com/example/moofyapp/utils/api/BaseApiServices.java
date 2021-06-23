@@ -1,5 +1,7 @@
 package com.example.moofyapp.utils.api;
 
+import com.example.moofyapp.response.ResponseFilm;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -15,6 +17,9 @@ public interface BaseApiServices {
     @POST("auth_api")
     Call<ResponseBody> authapimoofy(@Field("email") String email,
                                @Field("password") String password);
+
+    @GET("film_api")
+    Call<ResponseFilm> getMovie();
 
     @FormUrlEncoded
     @POST("register_api")
