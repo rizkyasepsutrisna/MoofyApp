@@ -93,13 +93,14 @@
                     android:textSize="14sp"/>
 
                 <TextView
+                    android:id="@+id/tv_Signup"
                     style="@style/parent"
                     android:layout_marginTop="5dp"
                     android:onClick="onLoginClick"
                     android:text="Sign Up"
                     android:textAlignment="center"
                     android:textColor="@color/primaryTextColor"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
             </LinearLayout>
 

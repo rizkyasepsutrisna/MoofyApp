@@ -4,7 +4,7 @@ public class Slide {
 
     private int Image ;
     private String Title;
-    // Add more field depand on whay you wa&nt ...
+
 
 
     public Slide(int image, String title) {

@@ -89,20 +89,6 @@
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputRepeatPassword"
-                        style="@style/parent"
-                        android:layout_marginTop="@dimen/loginViewsMargin"
-                        android:textColorHint="@color/white">
-
-                        <EditText
-                            android:id="@+id/editTextRepeatPassWord"
-                            style="@style/modifiedEditText"
-                            android:hint="Re-Enter Password"
-                            android:inputType="textPassword"
-                            android:maxLines="1" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
                     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                         android:id="@+id/cir_Regis_Button"
                         style="@style/loginButton"
@@ -123,6 +109,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tv_Signin"
                         style="@style/parent"
                         android:layout_marginTop="5dp"
                         android:onClick="onLoginClick"

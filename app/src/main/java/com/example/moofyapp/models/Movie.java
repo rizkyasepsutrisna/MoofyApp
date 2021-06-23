@@ -1,5 +1,10 @@
 package com.example.moofyapp.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.gson.annotations.SerializedName;
+
 public class Movie {
 
     private String title;
