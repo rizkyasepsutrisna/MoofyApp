@@ -18,6 +18,7 @@ import com.example.moofyapp.utils.SharedPrefManager;
 import com.example.moofyapp.utils.api.BaseApiServices;
 import com.example.moofyapp.utils.api.UtilsApi;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squareup.picasso.Picasso;
 
 public class MovieDetailActivity extends AppCompatActivity {
     public static final String DATA_MOVIE = "data_movie";
@@ -47,7 +48,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         MovieThumbnailImg = findViewById(R.id.detail_movie_img);
         //Glide.with(this).load(imageResourceId).into(MovieThumbnailImg);
        // MovieThumbnailImg.setImageResource(imageResourceId);
-        MovieCoverImg = findViewById(R.id.detail_movie_cover);
+        //MovieCoverImg = findViewById(R.id.imageView);
         //Glide.with(this).load(imagecover).into(MovieCoverImg);
         tv_title = findViewById(R.id.detail_movie_title);
         tv_title.setText(movie.getName());
@@ -55,10 +56,13 @@ public class MovieDetailActivity extends AppCompatActivity {
         tv_description = findViewById(R.id.detail_movie_desc);
         tv_description.setText(movie.getDescription());
         // setup animation
-        MovieCoverImg.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
+        //MovieCoverImg.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
         play_fab.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
         //yt link
         link = movie.getYtLink();
+
+        String urlPhoto = "http://182.158.1.108/moofy/gambar/"+ movie.getDir();
+        Picasso.get().load(urlPhoto).into(MovieThumbnailImg);
 
         play_fab.setOnClickListener(new View.OnClickListener() {
             @Override

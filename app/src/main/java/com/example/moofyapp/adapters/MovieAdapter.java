@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.moofyapp.R;
 import com.example.moofyapp.models.Movie;
 import com.example.moofyapp.ui.MovieDetailActivity;
+import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder> {
@@ -39,6 +41,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder>
 
     @Override
     public void onBindViewHolder(@NonNull MovieHolder movieholder, int i) {
+        movieholder.bind(movies.get(i));
         movieholder.TvTitle.setText(movies.get(i).getName());
         movieholder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,5 +69,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder>
             ImgMovie = itemView.findViewById(R.id.item_movie_img);
 
         }
+        void bind(Movie movie){
+            String urlPhoto = "http://182.158.1.108/moofy/gambar/"+ movie.getDir();
+            Picasso.get().load(urlPhoto).into(ImgMovie);
+        }
+    }
+    public void setData(ArrayList<Movie> items) {
+        movies.clear();
+        movies.addAll(items);
+        notifyDataSetChanged();
     }
 }

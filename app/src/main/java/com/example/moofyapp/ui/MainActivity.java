@@ -72,12 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
         getResultMovie();
 
-
-
-
         iniSlider();
-//        iniPopularMovies();
-//        iniWeekMovies();
+
     }
 
     private void getResultMovie(){
@@ -102,30 +98,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//    private void iniWeekMovies() {
-//        // Recyclerview Setup
-//        // ini data
-//        MovieAdapter weekMovieAdapter = new MovieAdapter(this, DataSource.getWeekMovies(),this);
-//        moviesRvWeek.setAdapter(weekMovieAdapter);
-//        moviesRvWeek.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-//    }
-
-//    private void iniPopularMovies() {
-//        // Recyclerview Setup
-//        // ini data
-//        MovieAdapter movieAdapter = new MovieAdapter(this, DataSource.getPopularMovies(),this);
-//        MoviesRV.setAdapter(movieAdapter);
-//        MoviesRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-//    }
 
     private void iniSlider() {
         // prepare a list of slides ..
         lstSlides = new ArrayList<>() ;
-        lstSlides.add(new Slide(R.drawable.aquaman,"Aquaman"));
+        lstSlides.add(new Slide(R.drawable.rampage,"Rampage"));
+        lstSlides.add(new Slide(R.drawable.blackpanther,"Black Panther"));
+        lstSlides.add(new Slide(R.drawable.jumanji,"Jumanji"));
+        lstSlides.add(new Slide(R.drawable.coonjuring,"The Conjuring"));
         lstSlides.add(new Slide(R.drawable.birdsofprey,"Birds Of Prey"));
-        lstSlides.add(new Slide(R.drawable.icarealot,"I Care A lot"));
-        lstSlides.add(new Slide(R.drawable.knivesout,"Knives Out"));
-        lstSlides.add(new Slide(R.drawable.fastfurious,"Fast Furious"));
         lstSlides.add(new Slide(R.drawable.deadpool,"Dead Pool"));
         SliderPagerAdapter adapter = new SliderPagerAdapter(this,lstSlides);
         sliderpager.setAdapter(adapter);
@@ -135,33 +116,6 @@ public class MainActivity extends AppCompatActivity {
         indicator.setupWithViewPager(sliderpager,true);
     }
 
-
-
-//    @Override
-//    public void onMovieClick(Movie movie, ImageView movieImageView) {
-//        // here we send movie information to detail activity
-//        // also we ll create the transition animation between the two activity
-//
-//        Intent intent = new Intent(this,MovieDetailActivity.class);
-//        // send movie information to deatilActivity
-//        intent.putExtra("title",movie.getTitle());
-//        intent.putExtra("imgURL",movie.getThumbnail());
-//        intent.putExtra("drawable/imgCover",movie.getCoverPhoto());
-//        // lets crezte the animation
-//        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,
-//                movieImageView,"sharedName");
-//
-//        startActivity(intent,options.toBundle());
-//
-//
-//
-//        // i l make a simple test to see if the click works
-//
-//        Toast.makeText(this,"item clicked : " + movie.getTitle(),Toast.LENGTH_LONG).show();
-//        // it works great
-//
-//
-//    }
 
     class SliderTimer extends TimerTask {
 
