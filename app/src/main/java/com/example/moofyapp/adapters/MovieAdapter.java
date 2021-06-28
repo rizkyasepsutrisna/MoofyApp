@@ -69,6 +69,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder>
             ImgMovie = itemView.findViewById(R.id.item_movie_img);
 
         }
+        // Ganti API sesuai ip address Masing"
         void bind(Movie movie){
             String urlPhoto = "http://182.158.1.108/moofy/gambar/"+ movie.getDir();
             Picasso.get().load(urlPhoto).into(ImgMovie);

@@ -60,7 +60,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         play_fab.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
         //yt link
         link = movie.getYtLink();
-
+        // Ganti API sesuai ip address Masing"
         String urlPhoto = "http://182.158.1.108/moofy/gambar/"+ movie.getDir();
         Picasso.get().load(urlPhoto).into(MovieThumbnailImg);
 
